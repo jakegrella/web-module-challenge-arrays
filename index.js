@@ -172,10 +172,13 @@ and should return the average number of words per item in the array.
 
 For example, getAverageWordLength(originalFlavors) should return a number between 0 and 3. */
 
-function getAverageWordLength(/*code here*/){
-
-    /*code here*/
-
+function getAverageWordLength(arr){
+    let arrLength = arr.length;
+    let totalWords = 0;
+    for(let i = 0; i < arr.length; i++){
+        totalWords += arr[i].split(" ").length;
+    }
+    return totalWords / arrLength;
 }
 
 
@@ -260,8 +263,32 @@ var regionalFlavors = ["Pink Bubblegum",
     "Chocolate Chocolate Chip Cheesecake",
     "Caramel 'n' Cookies"]
 
-function getRandomFlavors(/*code here*/){
+function getRandomFlavors(arr0, arr1, arr2, arr3){
+    // create new array to store condensed list
+    let randomFlavors = [];
 
-    /*code here*/
+    // loop 31 times to fill new array
+    for(let i=0; i < 31; i++) {
 
+        // choose random number 0-3 corresponding to each array
+        switch (Math.floor(Math.random() * 4)) {
+            case 0:
+                // choose a random number between 0 and arr.length-1
+                // push to new array
+                randomFlavors.push(arr0[Math.floor(Math.random() * (arr0.length-1))])
+                break;
+            case 1:
+                randomFlavors.push(arr1[Math.floor(Math.random() * (arr1.length-1))])
+                break;
+            case 2:
+                randomFlavors.push(arr2[Math.floor(Math.random() * (arr2.length-1))])
+                break;   
+            case 3:
+                randomFlavors.push(arr3[Math.floor(Math.random() * (arr3.length-1))])
+                break;  
+        }
+    }
+    return randomFlavors;
 }
+//test
+getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors);
